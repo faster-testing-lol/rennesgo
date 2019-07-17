@@ -1,0 +1,11 @@
+<app-account></app-account>
+
+<mat-tab-group>
+    <mat-tab label="Bus Lines">
+        <app-lines></app-lines>
+    </mat-tab>
+    <mat-tab *ngIf="user.profile !== undefined" label="Preferred Lines">
+        <app-lines preferred></app-lines>
+    </mat-tab>
+    <mat-tab label="Travels">  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,8 @@
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'font-awesome/css/font-awesome.css';
+
+
+*{
+    font-family: Arial;
+}

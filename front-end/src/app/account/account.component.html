@@ -1,0 +1,11 @@
+<div *ngIf="user.profile === undefined">
+    username: <input type="text" (input)="username = $event.target.value" /> 
+    password: <input type="password" (input)="pwd = $event.target.value" />
+    <button (click)="loginOrCreate()">{{createAccount ? 'Create account' : 'Log-in'}}</button>
+    create account:  <input type="checkbox" (change)="createAccount = !createAccount" />
+</div>
+
+<div *ngIf="user.profile !== undefined">
+    'Hey' <b>{{user.profile.username}}</b>&nbsp;
+    <button (click)="logout()">Logout</button>
+</div>
