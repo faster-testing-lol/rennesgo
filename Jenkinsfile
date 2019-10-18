@@ -5,10 +5,6 @@ pipeline {
        jdk 'jdk11'
     }
 
-    environment {
-        JAVA_HOME = "/var/jenkins_home/tools/hudson.model.JDK/jdk11/jdk-11.0.4+11"
-    }
-
     stages {
         stage('print_env') {
             steps {
