@@ -10,11 +10,16 @@ pipeline {
     }
 
     stages {
+        stage('print_env') {
+            steps {
+                sh "printenv | sort"
+            }
+        }
         stage('Build') {
             steps {
                 sh '''
                    cd back-end
-                   mvn build
+                   mvn compile
                 '''
             }
         }
