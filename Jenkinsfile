@@ -1,20 +1,30 @@
 pipeline {
     agent any
+    tools {
+       maven 'Maven'
+       jdk 'JAVA_HOME'
+    }
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh '''
+                   cd back-end
+                   mvn build
+                '''
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh '''
+                   cd back-end
+                   mvn test
+                '''
             }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+            post {
+                success {
+                    junit 'back-end/target/surefire-reports/**/*.xml'
+                }
             }
         }
     }
