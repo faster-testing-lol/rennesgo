@@ -2,7 +2,11 @@ pipeline {
     agent any
     tools {
        maven 'Maven'
-       jdk 'JAVA_HOME'
+       jdk 'jdk11'
+    }
+
+    environment {
+        JAVA_HOME = "/var/jenkins_home/tools/hudson.model.JDK/jdk11"
     }
 
     stages {
