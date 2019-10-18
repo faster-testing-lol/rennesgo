@@ -34,10 +34,14 @@ public class Profile {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Profile profile = (Profile) o;
+	public boolean equals(final Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		final Profile profile = (Profile) o;
 		return Objects.equals(prefLines, profile.prefLines) &&
 				Objects.equals(username, profile.username);
 	}
