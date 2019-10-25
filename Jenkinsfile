@@ -17,7 +17,8 @@ pipeline {
                    cd back-end
                    mvn compile
                 '''
-            }
+								jacoco(execPattern: 'target/jacoco.exec')            
+						}
         }
         stage('Test') {
             steps {
