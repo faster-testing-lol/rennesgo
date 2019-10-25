@@ -13,8 +13,7 @@ pipeline {
                    cd back-end
                    mvn clean compile
                 '''
-								jacoco(execPattern: 'target/jacoco.exec')            
-						}
+	    }
         }
         stage('Test-back') {
             steps {
@@ -22,6 +21,7 @@ pipeline {
                    cd back-end
                    mvn test
                 '''
+		jacoco(execPattern: 'target/jacoco.exec')
             }
             post {
                 success {
@@ -37,7 +37,7 @@ pipeline {
                 '''
             }
         }
-        stage('Test-back') {
+        stage('Test-front') {
             steps {
                 sh '''
                    cd front-end
