@@ -10,7 +10,6 @@ import { Network } from './model/Network';
 import { User } from './model/User';
 import { AccountComponent } from './account/account.component';
 import { LinesComponent } from './lines/lines.component';
-import { StopsComponent } from './stops/stops.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -29,7 +28,7 @@ describe('AppComponent', () => {
         AngularFontAwesomeModule
       ],
       declarations: [
-        AppComponent, StopsComponent, LinesComponent, AccountComponent
+        AppComponent, LinesComponent, AccountComponent
       ],
       providers: [Network, User]
     }).compileComponents();

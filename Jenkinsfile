@@ -3,24 +3,20 @@ pipeline {
     tools {
        maven 'Maven'
        jdk 'jdk11'
+       nodejs 'node'
     }
 
     stages {
-        stage('print_env') {
-            steps {
-                sh "printenv | sort"
-            }
-        }
-        stage('Build') {
+        stage('Build-back') {
             steps {
                 sh '''
                    cd back-end
-                   mvn compile
+                   mvn clean compile
                 '''
 								jacoco(execPattern: 'target/jacoco.exec')            
 						}
         }
-        stage('Test') {
+        stage('Test-back') {
             steps {
                 sh '''
                    cd back-end
@@ -31,6 +27,22 @@ pipeline {
                 success {
                     junit 'back-end/target/surefire-reports/**/*.xml'
                 }
+            }
+        }
+	stage('Build-front') {
+            steps {
+                sh '''
+                   cd front-end
+                   npm i
+                '''
+            }
+        }
+        stage('Test-back') {
+            steps {
+                sh '''
+                   cd front-end
+                   npm run test-ci
+                '''
             }
         }
     }
