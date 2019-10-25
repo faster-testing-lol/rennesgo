@@ -34,7 +34,7 @@ public class ProfileComponent {
 	public Stream<Profile> findProfileOf(final String username) {
 		return profiles
 			.parallelStream()
-			.filter(pref -> pref.getUsername().equals(username));
+			.filter(pref -> pref.getName().equals(username));
 	}
 
 	/**

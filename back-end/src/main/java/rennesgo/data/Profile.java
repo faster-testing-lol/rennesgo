@@ -1,11 +1,12 @@
 package rennesgo.data;
 
+import java.security.Principal;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Profile {
+public class Profile implements Principal {
 	/** The preferred bus lines of the user. */
 	private final Set<String> prefLines;
 	/** The username of the user profile. */
@@ -25,7 +26,7 @@ public class Profile {
 		prefLines.remove(line);
 	}
 
-	public String getUsername() {
+	public String getName() {
 		return username;
 	}
 

@@ -3,6 +3,10 @@ package rennesgo.data;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //import static org.junit.Assert.fail;
@@ -28,5 +32,11 @@ class TestProfile {
         p.addPrefLine("MyLine");
         p.removePrefLine("MyLine");
         assertTrue(p.getPrefLines().isEmpty());
+    }
+
+    @Test
+    void testEquals() {
+        assertEquals(p, p);
+        assertNotEquals(p, new Object());
     }
 }
