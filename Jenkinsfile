@@ -46,7 +46,7 @@ pipeline {
             }
             post {
                 success {
-                    junit 'front-end/**/juni-test-result/*.xml'
+                    junit 'front-end/src/junit-test-result/*.xml'
                 }
             }
         }
