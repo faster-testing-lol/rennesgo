@@ -6,16 +6,7 @@ pipeline {
        nodejs 'node'
     }
 
-
-
     stages {
-        stage('Build') {
-            steps {
-                sh './jenkins_build.sh'
-                junit '*/build/test-results/*.xml'
-                step( [ $class: 'JacocoPublisher' ] )
-            }
-        }
         stage('Build-back') {
             steps {
                 sh '''
