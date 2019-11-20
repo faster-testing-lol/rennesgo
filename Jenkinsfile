@@ -44,6 +44,11 @@ pipeline {
                    npm run test-ci
                 '''
             }
+            post {
+                success {
+                    junit 'front-end/**/juni-test-result/*.xml'
+                }
+            }
         }
     }
 }
