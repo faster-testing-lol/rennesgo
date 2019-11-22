@@ -13,7 +13,7 @@ pipeline {
                    cd back-end
                    mvn clean compile
                 '''
-	    }
+	        }
         }
         stage('Test-back') {
             steps {
@@ -21,11 +21,11 @@ pipeline {
                    cd back-end
                    mvn test
                 '''
-		jacoco(execPattern: 'target/jacoco.exec')
+                jacoco(execPattern: 'target/jacoco.exec')
             }
             post {
                 success {
-                    junit 'back-end/target/surefire-reports/**/*.xml'
+                    junit 'back-end/target/surefire-reports/*.xml'
                 }
             }
         }
@@ -43,6 +43,11 @@ pipeline {
                    cd front-end
                    npm run test-ci
                 '''
+            }
+            post {
+                success {
+                    junit 'front-end/src/junit-test-result/*.xml'
+                }
             }
         }
     }

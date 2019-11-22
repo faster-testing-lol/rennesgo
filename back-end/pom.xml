@@ -9,7 +9,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <jackson.version>2.9.6</jackson.version>
     </properties>
 
     <parent>
@@ -27,7 +26,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
+                <version>3.0.0-M3</version>
+                <!--<configuration>
+                    <argLine>${argLine}</argLine>
+                    <skipTests>${skip.unit.tests}</skipTests>
+                </configuration> -->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -44,6 +47,26 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>checkstyle</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.3</version>
+                <executions>
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -90,12 +113,6 @@
         </plugins>
     </build>
 
-    <reporting>
-        <plugins>
-
-        </plugins>
-    </reporting>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -137,18 +154,8 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>RELEASE</version>
+            <version>5.5.2</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs</artifactId>
-            <version>3.1.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.pitest</groupId>
-            <artifactId>pitest-junit5-plugin</artifactId>
-            <version>0.8</version>
         </dependency>
     </dependencies>
 </project>
