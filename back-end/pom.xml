@@ -9,6 +9,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <jackson.version>2.9.6</jackson.version>
     </properties>
 
     <parent>
@@ -47,9 +48,53 @@
                     </execution>
                 </executions>
             </plugin>
-            
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>3.1.12</version>
+                <configuration>
+                    <includeTests>true</includeTests>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>findbugs-test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.4.10</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>mutationCoverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+
+        </plugins>
+    </reporting>
 
     <dependencies>
         <dependency>
@@ -94,6 +139,16 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>RELEASE</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs</artifactId>
+            <version>3.1.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-junit5-plugin</artifactId>
+            <version>0.8</version>
         </dependency>
     </dependencies>
 </project>
