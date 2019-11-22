@@ -4,4 +4,5 @@ RUN mvn package
 
 FROM openjdk:13
 COPY --from=builder target/rennesgo-backend-*.jar server.jar
+EXPOSE 4444
 CMD java -jar server.jar

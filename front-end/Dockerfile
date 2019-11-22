@@ -1,4 +1,11 @@
-FROM nginx
+FROM node:lts-alpine AS builder
+WORKDIR /home/node
+RUN npm install -g npm
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN ./node_modules/.bin/ng build --optimization --output-path target
 
-COPY nginx.conf /etc/nginx/conf.d/diaballik.conf
-COPY src /usr/share/nginx/html
+FROM nginx:alpine
+EXPOSE 80
+COPY --from=builder /home/node/target/ /usr/share/nginx/html
