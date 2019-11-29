@@ -21,7 +21,7 @@ pipeline {
                    cd back-end
                    mvn test
                 '''
-                jacoco(execPattern: 'target/jacoco.exec')
+                jacoco(execPattern: 'back-end/target/jacoco.exec')
             }
             post {
                 success {
