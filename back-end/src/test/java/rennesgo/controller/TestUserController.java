@@ -55,5 +55,9 @@ public class TestUserController {
         pc.addProfile("Name2");
         controller.delAccount(pp, req);
         assertTrue(pc.getProfiles().isEmpty());
+        Mockito.when(req.getSession(false)).thenReturn(null);
+        pc.addProfile("Name2");
+        controller.delAccount(pp, req);
+        assertTrue(pc.getProfiles().isEmpty());
     }
 }

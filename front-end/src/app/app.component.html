@@ -4,7 +4,7 @@
     <mat-tab label="Bus Lines">
         <app-lines></app-lines>
     </mat-tab>
-    <mat-tab *ngIf="user.profile !== undefined" label="Preferred Lines">
+    <mat-tab id="preferred" *ngIf="user.profile !== undefined" label="Preferred Lines">
         <app-lines preferred></app-lines>
     </mat-tab>
     <mat-tab label="Travels">  </mat-tab>

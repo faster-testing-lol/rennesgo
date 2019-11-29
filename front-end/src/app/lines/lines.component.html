@@ -12,7 +12,7 @@
       <b>{{line.nomcourt}}</b>
     </mat-icon>
     <div *ngIf="user.profile !== undefined" class="star" [style.color]="line.couleurtexteligne">
-      <span [className]="getFavIconClasses(line.nomcourt)" (click)="fav(line.nomcourt)"></span>
+      <span [className]="getFavIconClasses(line.nomcourt) + ' ' + line.nomcourt" (click)="fav(line.nomcourt)"></span>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

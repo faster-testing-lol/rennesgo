@@ -1,8 +1,8 @@
 <div *ngIf="user.profile === undefined">
-    username: <input type="text" (input)="username = $event.target.value" /> 
-    password: <input type="password" (input)="pwd = $event.target.value" />
-    <button (click)="loginOrCreate()">{{createAccount ? 'Create account' : 'Log-in'}}</button>
-    create account:  <input type="checkbox" (change)="createAccount = !createAccount" />
+    username: <input id="username" type="text" (input)="username = $event.target.value" /> 
+    password: <input id="password" type="password" (input)="pwd = $event.target.value" />
+    <button id="login" (click)="loginOrCreate()">{{createAccount ? 'Create account' : 'Log-in'}}</button>
+    create account:  <input id="create" type="checkbox" (change)="createAccount = !createAccount" />
 </div>
 
 <div *ngIf="user.profile !== undefined">
