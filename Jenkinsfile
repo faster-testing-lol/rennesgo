@@ -34,7 +34,6 @@ pipeline {
                 sh '''
                    cd front-end
                    npm i
-                   tslint --project tsconfig.json
                 '''
             }
         }
