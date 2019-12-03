@@ -33,6 +33,7 @@ pipeline {
             steps {
                 sh '''
                    cd front-end
+                   tslint --project tsconfig.json
                    npm i
                 '''
             }
