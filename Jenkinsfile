@@ -62,7 +62,7 @@ pipeline {
         stage('Docker deploy') {
             steps {
                sh '''
-
+                   docker-compose up -d
                '''
             }
         }
