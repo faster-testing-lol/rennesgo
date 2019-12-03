@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+    front_1:
+        container_name: ${COMPOSE_PROJECT_NAME}_front_1
+        image: rennesgo-front:latest
+        expose:
+            - ${FRONT_EXPOSED_PORT}
+        networks:
+            public_net:
+                ipv4_address: ${FRONT_1_IP}
+    front_2:
+        container_name: ${COMPOSE_PROJECT_NAME}_front_2
+        image: rennesgo-front:latest
+        expose:
+            - ${FRONT_EXPOSED_PORT}
+        networks:
+            public_net:
+                ipv4_address: ${FRONT_2_IP}
+    back_1:
+        container_name: ${COMPOSE_PROJECT_NAME}_back_1
+        image: rennesgo-back:latest
+        expose:
+            - ${BACK_EXPOSED_PORT}
+        networks:
+            public_net:
+                ipv4_address: ${BACK_1_IP}
+    back_2:
+        container_name: ${COMPOSE_PROJECT_NAME}_back_2
+        image: rennesgo-back:latest
+        expose:
+            - ${BACK_EXPOSED_PORT}
+        networks:
+            public_net:
+                ipv4_address: ${BACK_2_IP}
+    proxy:
+        container_name: ${COMPOSE_PROJECT_NAME}_proxy
+        image: rennesgo-proxy:latest
+        ports:
+            - 80:80
+        expose:
+            - 80
+        networks:
+            public_net:
+                ipv4_address: ${HA_PROXY_IP}
+        environment:
+            - FRONT_1_IP=${FRONT_1_IP}
+            - FRONT_2_IP=${FRONT_2_IP}
+            - FRONT_EXPOSED_PORT=${FRONT_EXPOSED_PORT}
+            - BACK_1_IP=${BACK_1_IP}
+            - BACK_2_IP=${BACK_2_IP}
+            - BACK_EXPOSED_PORT=${BACK_EXPOSED_PORT}
+networks:
+    public_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: ${NETWORK_SUBNET}

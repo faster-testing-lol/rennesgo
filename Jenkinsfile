@@ -50,5 +50,21 @@ pipeline {
                 }
             }
         }
+	stage('Docker build') {
+	    steps {
+                sh '''
+                    docker build -t rennesgo-backend back-end
+                    docker build -t rennesgo-frontend front-end
+                    docker build -t rennesgo-proxy haproxy
+                '''
+            }
+	}
+        stage('Docker deploy') {
+            steps {
+               sh '''
+
+               '''
+            }
+        }
     }
 }
