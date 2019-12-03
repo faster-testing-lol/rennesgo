@@ -3,7 +3,7 @@ version: '2'
 services:
     front_1:
         container_name: ${COMPOSE_PROJECT_NAME}_front_1
-        image: rennesgo-frontend:latest
+        build: front-end
         expose:
             - ${FRONT_EXPOSED_PORT}
         networks:
@@ -11,7 +11,7 @@ services:
                 ipv4_address: ${FRONT_1_IP}
     front_2:
         container_name: ${COMPOSE_PROJECT_NAME}_front_2
-        image: rennesgo-frontend:latest
+        build: front-end
         expose:
             - ${FRONT_EXPOSED_PORT}
         networks:
@@ -19,7 +19,7 @@ services:
                 ipv4_address: ${FRONT_2_IP}
     back_1:
         container_name: ${COMPOSE_PROJECT_NAME}_back_1
-        image: rennesgo-backend:latest
+        build: back-end
         expose:
             - ${BACK_EXPOSED_PORT}
         networks:
@@ -27,7 +27,7 @@ services:
                 ipv4_address: ${BACK_1_IP}
     back_2:
         container_name: ${COMPOSE_PROJECT_NAME}_back_2
-        image: rennesgo-backend:latest
+        build: back-end
         expose:
             - ${BACK_EXPOSED_PORT}
         networks:
@@ -35,7 +35,7 @@ services:
                 ipv4_address: ${BACK_2_IP}
     proxy:
         container_name: ${COMPOSE_PROJECT_NAME}_proxy
-        image: rennesgo-proxy:latest
+        build: haproxy
         ports:
             - 8083:80
         expose:
