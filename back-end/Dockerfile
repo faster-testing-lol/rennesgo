@@ -1,4 +1,4 @@
-FROM maven:3.6.2-jdk-14 AS builder
+FROM maven:3.6.2-jdk-11 AS builder
 COPY . .
 RUN mvn package
 
